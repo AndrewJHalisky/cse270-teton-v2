@@ -4,7 +4,11 @@ name: Simple CI/CD Pipeline for CSE 270
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: 
+      - main
+  pull_request:
+    branches:
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -128,4 +132,4 @@ jobs:
           path: 'teton/1.6'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4.0.
+        uses: actions/deploy-pages@v4.0.0
