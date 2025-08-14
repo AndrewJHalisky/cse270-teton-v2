@@ -61,7 +61,7 @@ class TestSmokeTest():
   
   def test_joinTest(self):
     self.driver.get("http://127.0.0.1:5500/teton/1.6/join.html")
-    self.driver.set_window_size(796, 1173)
+    self.driver.set_window_size(1260, 1173)
     self.driver.find_element(By.NAME, "fname").click()
     elements = self.driver.find_elements(By.NAME, "fname")
     assert len(elements) > 0
@@ -70,9 +70,10 @@ class TestSmokeTest():
     self.driver.find_element(By.NAME, "lname").send_keys("Halisky")
     self.driver.find_element(By.NAME, "bizname").click()
     self.driver.find_element(By.NAME, "bizname").send_keys("Big Mans")
-    self.driver.find_element(By.CSS_SELECTOR, ".myinput:nth-child(5)").click()
+    self.driver.find_element(By.NAME, "biztitle").click()
     self.driver.find_element(By.NAME, "biztitle").send_keys("Developer")
     self.driver.find_element(By.NAME, "submit").click()
+    self.driver.find_element(By.NAME, "email").click()
     elements = self.driver.find_elements(By.NAME, "email")
     assert len(elements) > 0
     self.driver.find_element(By.NAME, "email").send_keys("ajhalisky@gmail.com")
@@ -85,7 +86,9 @@ class TestSmokeTest():
     self.driver.find_element(By.NAME, "websiteURL").send_keys("https://bigmans.org")
     self.driver.find_element(By.CSS_SELECTOR, "textarea").click()
     self.driver.find_element(By.CSS_SELECTOR, "textarea").send_keys("Big Mans is a nonprofit organization.")
+    elements = self.driver.find_elements(By.CSS_SELECTOR, ".myinput:nth-child(3)")
+    assert len(elements) > 0
     self.driver.find_element(By.NAME, "submit").click()
-    elements = self.driver.find_elements(By.CSS_SELECTOR, "tr:nth-child(3) > .left-justify")
+    elements = self.driver.find_elements(By.CSS_SELECTOR, ".join-confirm")
     assert len(elements) > 0
   
